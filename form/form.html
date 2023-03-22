@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>jq form</title>
+</head>
+<body>
+  <style>
+    .form {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      margin-top: 30px;
+    }
+    .buttons {
+      margin-top: 30px;
+    }
+    .radio {
+      margin-top: 30px;
+    }
+    .focus {
+      box-shadow: 1px 1px 20px 20px #bb3939;
+    }
+  </style>
+
+  <div class="form">
+    <div>
+      <input type="checkbox" value="c-b-1" checked>чек бокс 1
+      <input type="checkbox" value="c-b-2">чек бокс 2
+      <input type="checkbox" value="c-b-3" checked>чек бокс 3
+      <input type="checkbox" value="c-b-4">чек бокс 4
+    </div>
+    <div class="radio">
+      <input type="radio" name="rad" id="rad1" value="js">
+      <label for="rad1">js</label>
+      <input type="radio" name="rad" id="rad2" value="html">
+      <label for="rad2">html</label>
+      <input type="radio" name="rad" id="rad3" value="css">
+      <label for="rad3">css</label>
+    </div>
+    <div class="buttons">
+      <button type="submit">Отправить</button>
+      <button type="reset">Сбросить</button>
+    </div>
+    <br><br>
+
+    <div class="inputs-text">
+      <input class="text1" type="text" placeholder="name">
+      <input class="text2" type="email" placeholder="e-mail">
+      <input class="text3" type="password" placeholder="password">
+    </div>
+    <br><br>
+
+    <input type="file">
+    <br><br>
+
+    <div class="selects">
+      <select id="select1" size="4" wiidth="200">
+        <option value="1" selected>Номер 1</option>
+        <option value="2">Номер 2</option>
+        <option value="3">Номер 3</option>
+        <option value="4">Номер 4</option>
+      </select>
+      <select id="select2" size="4" wiidth="200"></select>
+    </div>
+    <br><br>
+
+    <textarea id="" cols="60" rows="5"></textarea>
+  </div>
+
+<script src="./jquery-3.6.3.min.js"></script>
+<script>
+  $(function(){
+
+    // $(':submit').click(function() {
+      $('.text3').submit(function(e){
+        if($('.text3').val()=="") {
+          console.log('Введите пароль');
+          e.preventDefault();
+        } else {
+          console.log($('.text3').val());
+        }
+      // });
+
+    });
+
+    // по кноаке вывести и почистить value textarea
+    // $(':submit').click(function(){
+    //   console.log($('textarea').val())
+    //   // $('textarea').val('')
+    // })
+    // $(':reset').click(function(){
+    //   $('textarea').val('')
+    // })
+
+      // значение 1 инпуьа вывел по клику в тексареа
+    // $(':submit').click(function(){
+    //   const val = $('input.text1').val()
+    //   $('textarea').val(val)
+    // })
+
+
+        // :checked показать выбранные, each (как фор перебирает элементы'), this каждый элемент в Форе
+    // $(':submit').click(function(){
+    //   const value = $(':checkbox:checked').each(function(){
+    //     const value = $(this).val()
+    //     console.log(value)
+    //   })
+    // })
+
+      // отправить выбранные radioButton
+    // $(':submit').click(function(){
+    //   const value = $(':radio:checked').val()
+    //     console.log(value)
+    // })
+
+    
+    // типо HOVER на нажатие 
+    // $('textarea').focus(function() {
+      //   $(this).addClass('focus')
+      // });
+      // $('textarea').blur(function() {
+        //   $(this).removeClass('focus')
+        // });
+        
+
+  //   $('#select1').change(function() {
+
+  //     const v = $('#select1 :selected').val()
+      
+  //     switch(v) {
+  //       case '1' :
+  //         $('#select2').html('<option value="2">Номер 2</option><option value="3">Номер 3</option><option value="4">Номер 4</option>')
+  //         break;
+  //       case '2' :
+  //         $('#select2').html('<option value="1">Номер 1</option><option value="3">Номер 3</option><option value="4">Номер 4</option>')
+  //         break;
+  //       case '3' :
+  //         $('#select2').html('<option value="1">Номер 1</option><option value="2">Номер 2</option><option value="4">номер 4</option>')
+  //         break;
+  //       case '4' :
+  //         $('#select2').html('<option value="1">Номер 1</option><option value="2">Номер 2</option><option value="3">Номер 3</option>')
+  //         break;
+
+  //   }
+  // });
+
+  // повесить и снять disabled
+  // $(':submit').click(function(e){
+  //   $('textarea').attr('disabled', 'disabled');
+  //   e.preventDefault();
+  // })
+  // $(':reset').click(function(e){
+  //   $('textarea').removeAttr('disabled');
+  //   e.preventDefault();
+  // })
+
+  })
+</script>
+</body>
+</html>

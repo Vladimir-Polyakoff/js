@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="import" href="import/form.html">
+  <title>Jq input Valid</title>
+  
+</head>
+<body>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      width: 100%;
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      gap: 10px;
+    }
+    button {
+      width: 200px;
+      border-radius: 10px;
+      font-size: 20px;
+      padding: 10px;
+      background: green;
+    }
+    input {
+      width: 200px;
+      border-radius: 10px;
+      font-size: 20px;
+      padding: 10px;
+      outline: none;
+    }
+    .is-invalid{
+      box-shadow: 0 0 4px 2px red inset;
+    }
+    .error {
+      color: red;
+      margin-top: 4px;
+      display: none;
+    }
+
+  </style>
+  <button id="switcher">on</button>
+  <div>
+    <input id="myInput">
+    <div class="error"></div>
+  </div>
+
+  <script src="./jquery-3.6.3.min.js"></script>
+  <script>
+    var doc = document.querySelector('link[rel="import"]').import;
+    var text = doc.querySelector('.doc');
+    document.body.appendChild(text.cloneNode(true));
+    </script>
+  <script>
+    $(function(){ 
+      // инпут валидация по кнопке
+      $('#switcher').click(function(){
+        if ($(this).html() === "on") {
+          const error = validInput(5, 3)
+
+          if(error) {
+            $('.error').html(error).css('display', 'block')
+          } else {
+            $('.error').css('display', 'none')
+            console.log($('#myInput').val())
+          }
+        }
+      })
+
+      function validInput(max, min) {
+        
+          if ($('#myInput').val().length > max) {
+            return 'максимальня длина символов не более ' + max
+          }
+          if ($('#myInput').val().length < min) {
+            return 'минимальная длина символов не менее ' + min
+          }
+        }
+
+      
+      $('#switcher').click(function(){
+        $(this).html($(this).html() === "on" ? 'off' : 'on')
+        $(this).css('background', $(this).html() === "on" ? 'green' : 'red');
+        toggleValid()
+      })
+
+      $('#myInput').keyup(function(){
+        toggleValid()
+      })
+
+      function toggleValid() {
+        if ($('#switcher').html() === "on") {
+          const error = validInput(5, 3)
+
+          if(error) {
+            $('.error').html(error).css('display', 'block')
+          } else {
+            $('.error').css('display', 'none')
+            console.log($('#myInput').val())
+          }
+        } else {
+          $('.error').css('display', 'none')
+        }
+      }
+
+      function validInput(max, min) {
+        if ($('#myInput').val().length > max) {
+          return 'максимальня длина символов не более ' + max
+        }
+        if ($('#myInput').val().length < min) {
+          return 'минимальная длина символов не менее ' + min
+        }
+      }
+
+        
+    })
+  </script>
+</body>
+</html>
